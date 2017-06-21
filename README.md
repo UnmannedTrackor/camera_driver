@@ -1,4 +1,4 @@
-# pg_driver
+# camera_driver
 
 ## Install steps
 * Clone the repo : 
