@@ -545,8 +545,8 @@
       <Endianess>LittleEndian</Endianess>
     </IntReg>
     <Integer Name="StreamFailedBufferCount" NameSpace="Standard">
-      <ToolTip>Number of corrupt images on this stream.</ToolTip>
-      <Description>Displays number of corrupt images on this stream.</Description>
+      <ToolTip>Number of images with missing leader/trailer.</ToolTip>
+      <Description>Displays number of incomplete images with missing leader/trailer information.</Description>
       <DisplayName>Failed Buffer Count</DisplayName>
       <Visibility>Expert</Visibility>
       <ImposedAccessMode>RO</ImposedAccessMode>
@@ -563,8 +563,8 @@
       <Endianess>LittleEndian</Endianess>
     </IntReg>
     <Integer Name="StreamBufferUnderrunCount" NameSpace="Standard">
-      <ToolTip>Number of dropped images on this stream.</ToolTip>
-      <Description>Displays number of dropped images on this stream.</Description>
+      <ToolTip>Number of dropped images caused by driver running out of buffers.</ToolTip>
+      <Description>Displays number of dropped images caused by driver running out of buffers.</Description>
       <DisplayName>Buffer Underrun Count</DisplayName>
       <Visibility>Expert</Visibility>
       <ImposedAccessMode>RO</ImposedAccessMode>

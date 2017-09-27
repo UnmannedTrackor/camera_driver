@@ -21,6 +21,11 @@
     <pFeature>GevInterfaceIPAddress</pFeature>
     <pFeature>GevInterfaceSubnetMask</pFeature>
     <pFeature>POEStatus</pFeature>
+    <pFeature>GevActionDeviceKey</pFeature>
+    <pFeature>GevActionGroupKey</pFeature>
+    <pFeature>GevActionGroupMask</pFeature>
+    <pFeature>GevActionTime</pFeature>
+    <pFeature>ActionCommand</pFeature>
     <pFeature>DeviceUnlock</pFeature>
   </Category>
   <Category Name="DeviceEnumeration" NameSpace="Standard">
@@ -29,7 +34,7 @@
     <DisplayName>Device Enumeration</DisplayName>
     <Visibility>Expert</Visibility>
     <pFeature>DeviceUpdateList</pFeature>
-	<pFeature>DeviceCount</pFeature>
+    <pFeature>DeviceCount</pFeature>
     <pFeature>DeviceSelector</pFeature>
     <pFeature>DeviceID</pFeature>
     <pFeature>DeviceVendorName</pFeature>
@@ -39,12 +44,12 @@
     <pFeature>GevDeviceSubnetMask</pFeature>
     <pFeature>GevDeviceMACAddress</pFeature>
     <pFeature>AutoForceIP</pFeature>
-	<pFeature>IncompatibleDeviceCount</pFeature>
+    <pFeature>IncompatibleDeviceCount</pFeature>
     <pFeature>IncompatibleDeviceSelector</pFeature>
     <pFeature>IncompatibleDeviceID</pFeature>
     <pFeature>IncompatibleDeviceVendorName</pFeature>
     <pFeature>IncompatibleDeviceModelName</pFeature>
-  </Category> 
+  </Category>
   <StringReg Name="InterfaceID" NameSpace="Standard">
     <ToolTip>Transport layer Producer wide unique identifier of the selected interface.</ToolTip>
     <Description>Transport layer Producer wide unique identifier of the selected interface.</Description>
@@ -89,7 +94,7 @@
     <Length>4</Length>
     <AccessMode>RO</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Unsigned</Sign> 
+    <Sign>Unsigned</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <Integer Name="GevInterfaceMACAddress" NameSpace="Standard">
@@ -107,7 +112,7 @@
     <Length>8</Length>
     <AccessMode>RO</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Unsigned</Sign> 
+    <Sign>Unsigned</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <Integer Name="GevInterfaceIPAddress" NameSpace="Standard">
@@ -125,7 +130,7 @@
     <Length>4</Length>
     <AccessMode>RO</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Unsigned</Sign> 
+    <Sign>Unsigned</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <Integer Name="GevInterfaceSubnetMask" NameSpace="Standard">
@@ -143,7 +148,7 @@
     <Length>4</Length>
     <AccessMode>RO</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Unsigned</Sign> 
+    <Sign>Unsigned</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <Enumeration Name="POEStatus" NameSpace="Standard">
@@ -151,7 +156,7 @@
     <Description>Reports and controls the interface's power over Ethernet status.</Description>
     <DisplayName>POE Status</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>POEStatusAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>POEStatusAvailable_RegVal</pIsAvailable>
     <ImposedAccessMode>RW</ImposedAccessMode>
     <EnumEntry Name="NotSupported" NameSpace="Standard">
       <ToolTip>Not Supported.</ToolTip>
@@ -179,7 +184,7 @@
       <Length>8</Length>
       <AccessMode>RO</AccessMode>
       <pPort>Device</pPort>
-      <Sign>Signed</Sign> 
+      <Sign>Signed</Sign>
       <Endianess>LittleEndian</Endianess>
   </IntReg>
   <IntReg Name="POEStatus_RegVal" NameSpace="Standard">
@@ -188,7 +193,7 @@
     <Length>4</Length>
     <AccessMode>RW</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Signed</Sign> 
+    <Sign>Signed</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <Command Name="DeviceUpdateList" NameSpace="Standard">
@@ -205,7 +210,7 @@
     <Description>Selector for the different devices on this interface. This value only changes on execution of "DeviceUpdateList". The selector is 0-based in order to match the index of the C interface.</Description>
     <DisplayName>Device Selector</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
     <ImposedAccessMode>RW</ImposedAccessMode>
     <pValue>DeviceSelector_RegVal</pValue>
   </Integer>
@@ -215,7 +220,7 @@
       <Length>8</Length>
       <AccessMode>RO</AccessMode>
       <pPort>Device</pPort>
-      <Sign>Signed</Sign> 
+      <Sign>Signed</Sign>
       <Endianess>LittleEndian</Endianess>
   </IntReg>
   <IntReg Name="DeviceSelector_RegVal">
@@ -224,7 +229,7 @@
     <Length>8</Length>
     <AccessMode>RW</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Signed</Sign> 
+    <Sign>Signed</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <Integer Name="IncompatibleDeviceSelector" NameSpace="Standard">
@@ -232,7 +237,7 @@
     <Description>Selector for the devices that are not compatible with Spinnaker on this interface. This value only changes on execution of "DeviceUpdateList". The selector is 0-based in order to match the index of the C interface.</Description>
     <DisplayName>Incompatible Device Selector</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>IncompatibleDeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>IncompatibleDeviceSelectorAvailable_RegVal</pIsAvailable>
     <ImposedAccessMode>RW</ImposedAccessMode>
     <pValue>IncompatibleDeviceSelector_RegVal</pValue>
   </Integer>
@@ -242,7 +247,7 @@
       <Length>8</Length>
       <AccessMode>RO</AccessMode>
       <pPort>Device</pPort>
-      <Sign>Signed</Sign> 
+      <Sign>Signed</Sign>
       <Endianess>LittleEndian</Endianess>
   </IntReg>
   <IntReg Name="IncompatibleDeviceSelector_RegVal">
@@ -251,7 +256,7 @@
     <Length>8</Length>
     <AccessMode>RW</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Signed</Sign> 
+    <Sign>Signed</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
  <Integer Name="DeviceCount" NameSpace="Standard">
@@ -268,7 +273,7 @@
     <Length>8</Length>
     <AccessMode>RO</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Unsigned</Sign> 
+    <Sign>Unsigned</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <StringReg Name="DeviceID" NameSpace="Standard">
@@ -276,7 +281,7 @@
     <Description>Interface wide unique identifier of the selected device. This value only changes on execution of "DeviceUpdateList".</Description>
     <DisplayName>Device ID</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
     <Address>0x1008</Address>
     <Length>250</Length>
     <AccessMode>RO</AccessMode>
@@ -287,7 +292,7 @@
     <Description>Name of the device vendor. This value only changes on execution of "DeviceUpdateList".</Description>
     <DisplayName>Device Vendor Name</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
     <Address>0x1102</Address>
     <Length>250</Length>
     <AccessMode>RO</AccessMode>
@@ -298,7 +303,7 @@
     <Description>Name of the device model. This value only changes on execution of "DeviceUpdateList".</Description>
     <DisplayName>Device Model Name</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
     <Address>0x11FC</Address>
     <Length>250</Length>
     <AccessMode>RO</AccessMode>
@@ -318,7 +323,7 @@
     <Length>8</Length>
     <AccessMode>RO</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Unsigned</Sign> 
+    <Sign>Unsigned</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <StringReg Name="IncompatibleDeviceID" NameSpace="Standard">
@@ -326,7 +331,7 @@
     <Description>Interface wide unique identifier of the selected incompatible device. This value only changes on execution of "DeviceUpdateList".</Description>
     <DisplayName>Incompatible Device ID</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>IncompatibleDeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>IncompatibleDeviceSelectorAvailable_RegVal</pIsAvailable>
     <Address>0x1408</Address>
     <Length>250</Length>
     <AccessMode>RO</AccessMode>
@@ -337,7 +342,7 @@
     <Description>Name of the incompatible device vendor. This value only changes on execution of "DeviceUpdateList".</Description>
     <DisplayName>Incompatible Device Vendor Name</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>IncompatibleDeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>IncompatibleDeviceSelectorAvailable_RegVal</pIsAvailable>
     <Address>0x1502</Address>
     <Length>250</Length>
     <AccessMode>RO</AccessMode>
@@ -348,7 +353,7 @@
     <Description>Name of the incompatible device model. This value only changes on execution of "DeviceUpdateList".</Description>
     <DisplayName>Incompatible Device Model Name</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>IncompatibleDeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>IncompatibleDeviceSelectorAvailable_RegVal</pIsAvailable>
     <Address>0x15FC</Address>
     <Length>250</Length>
     <AccessMode>RO</AccessMode>
@@ -359,7 +364,7 @@
     <Description>Gives the device's access status at the moment of the last execution of "DeviceUpdateList". This value only changes on execution of "DeviceUpdateList".</Description>
     <DisplayName>Device Access Status</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
     <ImposedAccessMode>RO</ImposedAccessMode>
    <EnumEntry Name="Unknown" NameSpace="Standard">
       <ToolTip>Unknown access.</ToolTip>
@@ -393,7 +398,7 @@
     <Length>8</Length>
     <AccessMode>RW</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Signed</Sign> 
+    <Sign>Signed</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <Integer Name="GevDeviceIPAddress" NameSpace="Standard">
@@ -401,7 +406,7 @@
     <Description>Current IP address of the GVCP interface of the selected remote device.</Description>
     <DisplayName>Gev Device IP Address</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
     <ImposedAccessMode>RO</ImposedAccessMode>
     <pValue>GevDeviceIPAddress_RegVal</pValue>
     <Representation>HexNumber</Representation>
@@ -412,7 +417,7 @@
     <Length>4</Length>
     <AccessMode>RO</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Unsigned</Sign> 
+    <Sign>Unsigned</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <Integer Name="GevDeviceSubnetMask" NameSpace="Standard">
@@ -420,7 +425,7 @@
     <Description>Current subnet mask of the GVCP interface of the selected remote device.</Description>
     <DisplayName>Gev Device Subnet Mask</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
     <ImposedAccessMode>RO</ImposedAccessMode>
     <pValue>GevDeviceSubnetMask_RegVal</pValue>
     <Representation>HexNumber</Representation>
@@ -431,7 +436,7 @@
     <Length>4</Length>
     <AccessMode>RO</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Unsigned</Sign> 
+    <Sign>Unsigned</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <Integer Name="GevDeviceMACAddress" NameSpace="Standard">
@@ -439,7 +444,7 @@
     <Description>48-bit MAC address of the GVCP interface of the selected remote device.</Description>
     <DisplayName>Gev Device MAC Address</DisplayName>
     <Visibility>Expert</Visibility>
-	<pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
+    <pIsAvailable>DeviceSelectorAvailable_RegVal</pIsAvailable>
     <ImposedAccessMode>RO</ImposedAccessMode>
     <pValue>GevDeviceMACAddress_RegVal</pValue>
     <Representation>HexNumber</Representation>
@@ -450,7 +455,7 @@
     <Length>8</Length>
     <AccessMode>RO</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Unsigned</Sign> 
+    <Sign>Unsigned</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <Command Name="AutoForceIP" NameSpace="Standard">
@@ -467,17 +472,106 @@
     <Length>8</Length>
     <AccessMode>RW</AccessMode>
     <pPort>Device</pPort>
-    <Sign>Signed</Sign> 
+    <Sign>Signed</Sign>
     <Endianess>LittleEndian</Endianess>
   </IntReg>
   <StringReg Name="DeviceUnlock" NameSpace="Standard">
-	<ToolTip>Unlocks devices for internal use.</ToolTip>
-	<Description>Unlocks devices for internal use.</Description>
-	<DisplayName>Device Unlock</DisplayName>
-	<Visibility>Expert</Visibility>
-	<Address>0x13F6</Address>
-	<Length>256</Length>
-	<AccessMode>RW</AccessMode>
-	<pPort>Device</pPort>
-  </StringReg>  
+    <ToolTip>Unlocks devices for internal use.</ToolTip>
+    <Description>Unlocks devices for internal use.</Description>
+    <DisplayName>Device Unlock</DisplayName>
+    <Visibility>Expert</Visibility>
+    <Address>0x13F6</Address>
+    <Length>256</Length>
+    <AccessMode>RW</AccessMode>
+    <pPort>Device</pPort>
+  </StringReg>
+  <Integer Name="GevActionDeviceKey" NameSpace="Standard">
+    <ToolTip>Authorization key.</ToolTip>
+    <Description>Key to authorize the action for the device.</Description>
+    <DisplayName>Action Device Key</DisplayName>
+    <Visibility>Expert</Visibility>
+    <ImposedAccessMode>RW</ImposedAccessMode>
+    <pValue>GevActionDeviceKey_RegVal</pValue>
+    <Representation>PureNumber</Representation>
+  </Integer>
+  <IntReg Name="GevActionDeviceKey_RegVal" NameSpace="Standard">
+    <Visibility>Invisible</Visibility>
+    <Address>0x5028</Address>
+    <Length>4</Length>
+    <AccessMode>RW</AccessMode>
+    <pPort>Device</pPort>
+    <Sign>Unsigned</Sign>
+    <Endianess>LittleEndian</Endianess>
+  </IntReg>
+  <Integer Name="GevActionGroupKey" NameSpace="Standard">
+    <ToolTip>Provides the key that the device will use to validate the action on reception of the action protocol message.</ToolTip>
+    <Description>Provides the key that the device will use to validate the action on reception of the action protocol message.</Description>
+    <DisplayName>Action Group Key</DisplayName>
+    <Visibility>Expert</Visibility>
+    <ImposedAccessMode>RW</ImposedAccessMode>
+    <pValue>GevActionGroupKey_RegVal</pValue>
+    <Representation>PureNumber</Representation>
+  </Integer>
+  <IntReg Name="GevActionGroupKey_RegVal" NameSpace="Standard">
+    <Visibility>Invisible</Visibility>
+    <Address>0x502C</Address>
+    <Length>4</Length>
+    <AccessMode>RW</AccessMode>
+    <pPort>Device</pPort>
+    <Sign>Unsigned</Sign>
+    <Endianess>LittleEndian</Endianess>
+  </IntReg>
+  <Integer Name="GevActionGroupMask" NameSpace="Standard">
+    <ToolTip>Provides the mask that the device will use to validate the action on reception of the action protocol message.</ToolTip>
+    <Description>Provides the mask that the device will use to validate the action on reception of the action protocol message.</Description>
+    <DisplayName>Action Group Mask</DisplayName>
+    <Visibility>Expert</Visibility>
+    <ImposedAccessMode>RW</ImposedAccessMode>
+    <pValue>GevActionGroupMask_RegVal</pValue>
+    <Representation>PureNumber</Representation>
+  </Integer>
+  <IntReg Name="GevActionGroupMask_RegVal" NameSpace="Standard">
+    <Visibility>Invisible</Visibility>
+    <Address>0x5030</Address>
+    <Length>4</Length>
+    <AccessMode>RW</AccessMode>
+    <pPort>Device</pPort>
+    <Sign>Unsigned</Sign>
+    <Endianess>LittleEndian</Endianess>
+  </IntReg>
+  <Integer Name="GevActionTime" NameSpace="Standard">
+    <ToolTip>Provides the time in nanoseconds when the action is to be executed.</ToolTip>
+    <Description>Provides the time in nanoseconds when the action is to be executed.</Description>
+    <DisplayName>Action Time</DisplayName>
+    <Visibility>Expert</Visibility>
+    <ImposedAccessMode>RW</ImposedAccessMode>
+    <pValue>GevActionTime_RegVal</pValue>
+    <Representation>PureNumber</Representation>
+  </Integer>
+  <IntReg Name="GevActionTime_RegVal" NameSpace="Standard">
+    <Visibility>Invisible</Visibility>
+    <Address>0x5034</Address>
+    <Length>8</Length>
+    <AccessMode>RW</AccessMode>
+    <pPort>Device</pPort>
+    <Sign>Unsigned</Sign>
+    <Endianess>LittleEndian</Endianess>
+  </IntReg>
+  <Command Name="ActionCommand" NameSpace="Standard">
+    <ToolTip>Issues an Action Command to attached GEV devices on interface.</ToolTip>
+    <Description>Issues an Action Command to attached GEV devices on interface.</Description>
+    <DisplayName>Action Command</DisplayName>
+    <Visibility>Expert</Visibility>
+    <pValue>ActionCommand_CtrlValueReg</pValue>
+    <CommandValue>1</CommandValue>
+  </Command>
+  <IntReg Name="ActionCommand_CtrlValueReg">
+    <Visibility>Invisible</Visibility>
+    <Address>0x503C</Address>
+    <Length>4</Length>
+    <AccessMode>RW</AccessMode>
+    <pPort>Device</pPort>
+    <Sign>Signed</Sign>
+    <Endianess>LittleEndian</Endianess>
+  </IntReg>
 </RegisterDescription>
