@@ -5,6 +5,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <iostream>
 #include <sstream>
+#include <pg_driver/Image.h>
 
 using namespace std;
 
@@ -63,7 +64,7 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "driver");
     ros::NodeHandle nh;
     ros::Rate loop(1);
-    ros::Publisher pub = nh.advertise<image_pub::Image>("camera/image", 1000);
+    ros::Publisher pub = nh.advertise<pg_driver::Image>("camera/image", 1000);
     //image_transport::ImageTransport it(nh);
     //image_transport::Publisher pub = it.advertise("camera/image", 1);
     
@@ -191,7 +192,7 @@ int main(int argc, char** argv)
     //======================================Core Module======================================//
     int imageCnt = 0;
     //sensor_msgs::ImagePtr msg (new sensor_msgs::Image);
-    image_pub::ImagePtr img_out(new image_pub::Image);
+    pg_driver::ImagePtr img_out(new pg_driver::Image);
     // Retrieve, and publish images
     while(ros::ok()){
         std::cout << "Enter the loop" << std::endl;

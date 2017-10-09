@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   image_transport
   cv_bridge
+  message_generation
 )
 
 find_package(Boost REQUIRED COMPONENTS system)
@@ -40,3 +41,7 @@ add_executable(${PROJECT_NAME}_node src/pg_driver_node.cpp)
 add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 set(EXTRALIB_BIN ${PROJECT_SOURCE_DIR}/lib/libSpinnaker.so)
 target_link_libraries(${PROJECT_NAME}_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${EXTRALIB_BIN})
+
+add_executable(image_sub_node src/image_sub_node.cpp)
+add_dependencies(image_sub_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(image_sub_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
