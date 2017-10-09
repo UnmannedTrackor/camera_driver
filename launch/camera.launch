@@ -2,8 +2,10 @@
 
 <launch>
 	<node pkg="pg_driver" type="pg_driver_node" name="pg_driver" output="screen"/>
+
+	<node pkg="pg_driver" type="image_sub_node" name="image_sub" output="screen"/>
 	
 	<node pkg="image_view" type="image_view" name="cam_view">
-	      <remap from="image"  to="/camera/image"/>
+	      <remap from="image"  to="/transfrom/ros_img"/>
 	</node>
 </launch>

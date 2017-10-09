@@ -94,3 +94,7 @@ To publish the message
 ## Update 2017/9/26 22:24
 update the spinnaker driver to version 1_5_0_27
 
+## Update 2017/10/9 
+insert the image transport into the new spinnaker driver
+run camera.launch, this will able tow node, one for gathering the camera images and transform into defined Image message, 
+and one for transform the defined message back into ros sensor_msgs.

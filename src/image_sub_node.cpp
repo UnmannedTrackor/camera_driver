@@ -12,7 +12,7 @@ public:
         : n_(n), it_(n)
     {
         sub_ = n_.subscribe("camera/image", 1, &ImageSub::imageCallback, this);
-        pub_ = it_.advertise("ros_img", 1);
+        pub_ = it_.advertise("transfrom/ros_img", 1);
     }
 
     virtual ~ImageSub() {}
@@ -45,7 +45,7 @@ private:
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "image_sub");
-    ros::NodeHandle nh("~");
+    ros::NodeHandle nh;
 
     ImageSub imageSub(nh);
     ros::spin();
