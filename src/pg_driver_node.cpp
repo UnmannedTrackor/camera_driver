@@ -6,13 +6,15 @@
 #include <iostream>
 #include <sstream>
 
+using namespace std;
+
 #include "Spinnaker.h"
 #include "SpinGenApi/SpinnakerGenApi.h"
 
 using namespace Spinnaker;
 using namespace Spinnaker::GenApi;
 using namespace Spinnaker::GenICam;
-using namespace std;
+
 
 
 // This function prints the device information of the camera from the transport
@@ -56,15 +58,15 @@ int PrintDeviceInfo(INodeMap & nodeMap)
     return result;
 }
 
-
 int main(int argc, char** argv)
 {
     ros::init(argc, argv, "driver");
     ros::NodeHandle nh;
     ros::Rate loop(1);
-    image_transport::ImageTransport it(nh);
-    image_transport::Publisher pub = it.advertise("camera/image", 1);
-
+    //image_transport::ImageTransport it(nh);
+    //image_transport::Publisher pub = it.advertise("camera/image", 1);
+    
+ 
     //======================================Camera Setup======================================//
     //======================================Camera Setup======================================//
     //======================================Camera Setup======================================//
@@ -259,7 +261,7 @@ int main(int argc, char** argv)
         //
         pResultImage->Release();
 
-        pub.publish(msg);
+        //pub.publish(msg);
         std::cout << "Image retrieve done" << std::endl;
         ros::spinOnce();
         loop.sleep();
@@ -296,7 +298,7 @@ int main(int argc, char** argv)
 
     // Release system
     system->ReleaseInstance();
-
+  
     cout << endl << "Done! Press Enter to exit..." << endl;
     getchar();
 
