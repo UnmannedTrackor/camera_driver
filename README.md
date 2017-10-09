@@ -98,3 +98,5 @@ update the spinnaker driver to version 1_5_0_27
 insert the image transport into the new spinnaker driver
 run camera.launch, this will able tow node, one for gathering the camera images and transform into defined Image message, 
 and one for transform the defined message back into ros sensor_msgs.
+
+run multiCamera.launch, this will enable the multi camera stream case.
