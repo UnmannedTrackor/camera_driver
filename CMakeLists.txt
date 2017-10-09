@@ -15,6 +15,19 @@ find_package(catkin REQUIRED COMPONENTS
 
 find_package(Boost REQUIRED COMPONENTS system)
 
+################################################
+## Declare ROS messages                       ##
+################################################
+add_message_files(
+   FILES
+   Image.msg
+)
+
+generate_messages(
+   DEPENDENCIES
+   std_msgs
+)
+
 catkin_package()
 
 include_directories(
@@ -25,6 +38,5 @@ include_directories(
 
 add_executable(${PROJECT_NAME}_node src/pg_driver_node.cpp)
 add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
 set(EXTRALIB_BIN ${PROJECT_SOURCE_DIR}/lib/libSpinnaker.so)
 target_link_libraries(${PROJECT_NAME}_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${EXTRALIB_BIN})

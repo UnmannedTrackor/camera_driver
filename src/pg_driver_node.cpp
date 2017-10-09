@@ -63,6 +63,7 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "driver");
     ros::NodeHandle nh;
     ros::Rate loop(1);
+    ros::Publisher pub = nh.advertise<image_pub::Image>("camera/image", 1000);
     //image_transport::ImageTransport it(nh);
     //image_transport::Publisher pub = it.advertise("camera/image", 1);
     
@@ -189,7 +190,8 @@ int main(int argc, char** argv)
     //======================================Core Module======================================//
     //======================================Core Module======================================//
     int imageCnt = 0;
-    sensor_msgs::ImagePtr msg (new sensor_msgs::Image);
+    //sensor_msgs::ImagePtr msg (new sensor_msgs::Image);
+    image_pub::ImagePtr img_out(new image_pub::Image);
     // Retrieve, and publish images
     while(ros::ok()){
         std::cout << "Enter the loop" << std::endl;
@@ -246,9 +248,23 @@ int main(int argc, char** argv)
             unsigned int rowsize = convertedImage->GetWidth();
             unsigned int colsize = convertedImage->GetHeight();
 
-            cv::Mat image = cv::Mat(colsize + YPadding, rowsize + XPadding,
+            cv::Mat mat= cv::Mat(colsize + YPadding, rowsize + XPadding,
                                     CV_8UC1, convertedImage->GetData(), convertedImage->GetStride());
-            msg = cv_bridge::CvImage(std_msgs::Header(), "mono8", image).toImageMsg();
+            //msg = cv_bridge::CvImage(std_msgs::Header(), "mono8", image).toImageMsg();
+            std::vector<uchar> array;
+            if (mat.isContinuous()) {
+              array.assign(mat.datastart, mat.dataend);
+            } else {
+              for (int i = 0; i < mat.rows; ++i) {
+                array.insert(array.end(), mat.ptr<uchar>(i), mat.ptr<uchar>(i)+mat.cols);
+              }
+            }
+            img_out.header.frame_id = "Image";
+            img_out.header.stamp = ros::Time::now();
+            img_out.data = array;
+            img_out.cols = mat.cols;
+            img_out.rows = mat.rows;
+            img_out.type = mat.type();
         }
 
         //
@@ -260,8 +276,9 @@ int main(int argc, char** argv)
         // buffer.
         //
         pResultImage->Release();
-
         //pub.publish(msg);
+        pub.publish(img_out);
+        ROS_INFO_STREAM("New image");
         std::cout << "Image retrieve done" << std::endl;
         ros::spinOnce();
         loop.sleep();
