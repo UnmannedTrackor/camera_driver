@@ -40,18 +40,18 @@ include_directories(
 set(EXTRALIB_BIN ${PROJECT_SOURCE_DIR}/lib/libSpinnaker.so)
 
 
-add_executable(${PROJECT_NAME}_node src/pg_driver_node.cpp)
-add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(${PROJECT_NAME}_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${EXTRALIB_BIN})
+add_executable(singleCam_node src/singleCam_node.cpp)
+add_dependencies(singleCam_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(singleCam_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${EXTRALIB_BIN})
 
-add_executable(mutiCam_node src/multiCam_node.cpp)
-add_dependencies(mutiCam_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(mutiCam_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${EXTRALIB_BIN})
+add_executable(single_sub_node src/singleCam_sub_node.cpp)
+add_dependencies(single_sub_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(single_sub_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
-add_executable(image_sub_node src/image_sub_node.cpp)
-add_dependencies(image_sub_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(image_sub_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(multiCam_node src/multiCam_node.cpp)
+add_dependencies(multiCam_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(multiCam_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${EXTRALIB_BIN})
 
-add_executable(multiImage_sub_node src/multiImage_sub_node.cpp)
-add_dependencies(multiImage_sub_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(multiImage_sub_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(multi_sub_node src/multiCam_sub_node.cpp)
+add_dependencies(multi_sub_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(multi_sub_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})

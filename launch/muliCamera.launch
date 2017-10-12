@@ -1,9 +1,9 @@
 <!-- -->
 
 <launch>
-	<node pkg="pg_driver" type="multiCam_node" name="multiCam_driver" output="screen"/>
+	<node pkg="pg_driver" type="multiCam_node" name="multi_Cam" output="screen"/>
 
-	<node pkg="pg_driver" type="multiImage_sub_node" name="multiImage_sub" output="screen"/>
+	<node pkg="pg_driver" type="multi_sub_node" name="multiCam_sub" output="screen"/>
 	
 	<node pkg="image_view" type="image_view" name="cam_view1">
 	      <remap from="image"  to="/transfrom/ros_img1"/>
