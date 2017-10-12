@@ -44,7 +44,7 @@ add_executable(${PROJECT_NAME}_node src/pg_driver_node.cpp)
 add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(${PROJECT_NAME}_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${EXTRALIB_BIN})
 
-add_executable(mutiCam_node src/mutiCam_node.cpp)
+add_executable(mutiCam_node src/multiCam_node.cpp)
 add_dependencies(mutiCam_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(mutiCam_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${EXTRALIB_BIN})
 
@@ -54,4 +54,4 @@ target_link_libraries(image_sub_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 add_executable(multiImage_sub_node src/multiImage_sub_node.cpp)
 add_dependencies(multiImage_sub_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(image_sub_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(multiImage_sub_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})

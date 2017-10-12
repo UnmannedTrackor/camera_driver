@@ -260,12 +260,12 @@ int main(int argc, char** argv)
                 array.insert(array.end(), mat.ptr<uchar>(i), mat.ptr<uchar>(i)+mat.cols);
               }
             }
-            img_out.header.frame_id = "Image";
-            img_out.header.stamp = ros::Time::now();
-            img_out.data = array;
-            img_out.cols = mat.cols;
-            img_out.rows = mat.rows;
-            img_out.type = mat.type();
+            img_out->header.frame_id = "Image";
+            img_out->header.stamp = ros::Time::now();
+            img_out->data = array;
+            img_out->cols = mat.cols;
+            img_out->rows = mat.rows;
+            img_out->type = mat.type();
         }
 
         //

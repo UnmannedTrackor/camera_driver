@@ -57,7 +57,7 @@ class ImagePub
 {
 public:
   ImagePub(ros::NodeHandle n)
-    : n_(n), it_(n)
+    : n_(n)
   {
     pub1_ = n_.advertise<pg_driver::Image>("image_pub1", 1000);
     pub2_ = n_.advertise<pg_driver::Image>("image_pub2", 1000);
@@ -179,7 +179,7 @@ int ImagePub::AcquireImages(CameraList camList)
 		else
 		  {
 		    // Print image information
-		    cout << "Camera " << i << " grabbed image " << imageCnt << ", width = " << pResultImage->GetWidth() << ", height = " << pResultImage->GetHeight() << endl;
+		    //cout << "Camera " << i << " grabbed image " << imageCnt << ", width = " << pResultImage->GetWidth() << ", height = " << pResultImage->GetHeight() << endl;
 
 		    // Convert image to mono 8
 		    ImagePtr convertedImage = pResultImage->Convert(PixelFormat_Mono8, HQ_LINEAR);
@@ -203,12 +203,12 @@ int ImagePub::AcquireImages(CameraList camList)
 		    }
 
 		    pg_driver::ImagePtr img_out(new pg_driver::Image);
-		    img_out.header.frame_id = "Image";
-		    img_out.header.stamp = ros::Time::now();
-		    img_out.data = array;
-		    img_out.cols = mat.cols;
-		    img_out.rows = mat.rows;
-		    img_out.type = mat.type();
+		    img_out->header.frame_id = "Image";
+		    img_out->header.stamp = ros::Time::now();
+		    img_out->data = array;
+		    img_out->cols = mat.cols;
+		    img_out->rows = mat.rows;
+		    img_out->type = mat.type();
 		    if (i==0)  pub1_.publish(img_out);
 		    if (i==1)  pub2_.publish(img_out);
 		  }
@@ -400,9 +400,9 @@ int main(int argc, char** argv)
 
   // Run example on all cameras
   cout << endl << "Running example for all cameras..." << endl;
-  ImageSub imageSub(nh);
+  ImagePub imagePub(nh);
 
-  imageSub.RunMultipleCameras(camList);
+  imagePub.RunMultipleCameras(camList);
 
   cout << "Example complete..." << endl << endl;
 
